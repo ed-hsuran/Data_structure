@@ -8,7 +8,7 @@ int main(){
 	stk.push(4);
 	//將元素推入stk頂端   stk = {4}
 	stk.push(7);
-	//                    stk = {4, 7}
+	//                   stk = {4, 7}
 	stk.pop();
 	//將stk頂端之元素彈出 stk = {4}
 	stk.top();
