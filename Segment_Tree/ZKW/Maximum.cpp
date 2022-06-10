@@ -24,7 +24,7 @@ ll query(int l, int r){ //詢問區域最大值
 		if (r & 1) ans = max(ans, zkw[--r]); //如果r-1是左子樹則左移
 	}
 	return ans;
-} // &閘 此用於判定奇偶(左右子樹)
+} // &閘 --> 此用於判定奇偶(左右子樹)
 
 void show(){
 	cout << "/我是zkw線段樹\\\n";
