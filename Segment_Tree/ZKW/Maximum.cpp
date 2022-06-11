@@ -41,8 +41,6 @@ void pull(int i){ //更新邊界，更改結果下往上拉
 
 void modify(int l, int r, int v){  //區間修改
 	int _l = l, _r = r;
-	//push(_l+n); //懶標先都推下去
-	//push(_r+n-1);
 	for (l+=n, r+=n; l<r; l>>=1, r>>=1){
 		if (l & 1) update(l++, v); //如果 l 是右子樹則右移
 		if (r & 1) update(--r, v); //如果r-1是左子樹則左移
