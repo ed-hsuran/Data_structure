@@ -90,6 +90,7 @@ int main(){
 	show();
 	modify(2, 5, 7); //第2 ~ 4號各加 7
 	modify(3, 8, 5); //第3 ~ 7號各加 5
+	// {5, 3, 11, 20, 14, 14, 11, 12}
 	show();	show_tag();
 	cout << "第0個到第3個的最大元素? " << query(0, 4) << "\n";
 	show();	show_tag();
