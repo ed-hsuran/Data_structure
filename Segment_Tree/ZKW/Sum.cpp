@@ -6,7 +6,7 @@ using namespace std;
 typedef long long ll;
 
 //zkw線段樹--(迭代型線段樹)
-//區間最大值
+//區間總和
 //以下為左閉右開
 
 const int MAXN = 50005;
