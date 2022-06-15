@@ -10,7 +10,7 @@ typedef long long ll;
 //以下為左閉右開
 
 const int MAXN = 50005;
-ll n, arr[MAXN], zkw[MAXN<<1], tag[MAXN];
+ll n, arr[MAXN], zkw[MAXN<<1], lazy[MAXN];
 
 void init(ll v[]){ //建樹
 	for (int i=0; i<n; i++) zkw[i+n] = v[i]; //底層元素
@@ -19,22 +19,22 @@ void init(ll v[]){ //建樹
 
 void update(int i, ll v){ //打懶標
 	zkw[i] += v;
-	if (i < n) tag[i] += v; //葉節點沒得推
+	if (i < n) lazy[i] += v; //葉節點沒得推
 }
 
 void push(int i){ //推懶標，將標記由上而下推給子節點
 	for (int h=__lg(n); h>=0; h--){
 		int p = i >> h; //越祖先越優先
-		if (!tag[p>>1]) continue;
-		update(p, tag[p>>1]);
-		update(p^1, tag[p>>1]);
-		tag[p>>1] = 0; //記得推完撤掉標記
+		if (!lazy[p>>1]) continue;
+		update(p, lazy[p>>1]);
+		update(p^1, lazy[p>>1]);
+		lazy[p>>1] = 0; //記得推完撤掉標記
 	}
 }
 
 void pull(int i){ //更新邊界，更改結果下往上拉
 	while (i > 1){
-		zkw[i>>1] = max(zkw[i], zkw[i^1]) + tag[i>>1];
+		zkw[i>>1] = max(zkw[i], zkw[i^1]) + lazy[i>>1];
 		i >>= 1;
 	}
 }
@@ -73,7 +73,7 @@ void show_tag(){ //打印未處理懶標
 	bool noexist = true;
 	cout << "\n有懶標:\n";
 	for (int i=1; i<(n<<1); i++){
-		if (tag[i]) printf("%d號: 標記%d\n", i, tag[i]), noexist = false;
+		if (lazy[i]) printf("%d號: 標記%d\n", i, lazy[i]), noexist = false;
 	}
 	if (noexist) cout << "None\n";
 	cout << "\n";
